@@ -1,0 +1,65 @@
+#! c:/iverilog-x64/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1_1)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_000000000077ff50 .scope module, "norgate_tb" "norgate_tb" 2 1;
+ .timescale 0 0;
+v00000000007d96f0_0 .var "t_a", 0 0;
+v00000000007d9790_0 .var "t_b", 0 0;
+v00000000007d9830_0 .net "t_c", 0 0, L_00000000007da2b0;  1 drivers
+v00000000007d98d0_0 .net "t_d", 0 0, L_00000000007da320;  1 drivers
+v00000000007d9970_0 .net "t_e", 0 0, L_00000000007da390;  1 drivers
+v00000000007d9a10_0 .net "t_y", 0 0, L_00000000007da400;  1 drivers
+S_000000000077baa0 .scope module, "my_gate" "norgate" 2 5, 3 1 0, S_000000000077ff50;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /OUTPUT 1 "c"
+    .port_info 3 /OUTPUT 1 "d"
+    .port_info 4 /OUTPUT 1 "e"
+    .port_info 5 /OUTPUT 1 "y"
+L_00000000007da2b0 .functor NAND 1, v00000000007d96f0_0, v00000000007d96f0_0, C4<1>, C4<1>;
+L_00000000007da320 .functor NAND 1, v00000000007d9790_0, v00000000007d9790_0, C4<1>, C4<1>;
+L_00000000007da390 .functor NAND 1, L_00000000007da2b0, L_00000000007da320, C4<1>, C4<1>;
+L_00000000007da400 .functor NAND 1, L_00000000007da390, L_00000000007da390, C4<1>, C4<1>;
+v000000000077bc20_0 .net "a", 0 0, v00000000007d96f0_0;  1 drivers
+v000000000077bcc0_0 .net "b", 0 0, v00000000007d9790_0;  1 drivers
+v000000000077bd60_0 .net "c", 0 0, L_00000000007da2b0;  alias, 1 drivers
+v000000000077be00_0 .net "d", 0 0, L_00000000007da320;  alias, 1 drivers
+v00000000007d95b0_0 .net "e", 0 0, L_00000000007da390;  alias, 1 drivers
+v00000000007d9650_0 .net "y", 0 0, L_00000000007da400;  alias, 1 drivers
+    .scope S_000000000077ff50;
+T_0 ;
+    %vpi_call 2 10 "$monitor", "%b %b %b %b %b %b", v00000000007d96f0_0, v00000000007d9790_0, v00000000007d9830_0, v00000000007d98d0_0, v00000000007d9970_0, v00000000007d9a10_0 {0 0 0};
+    %vpi_call 2 11 "$display", "A B C D E F G Y" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000007d96f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000007d9790_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000007d96f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000007d9790_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000007d96f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000007d9790_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000007d96f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000007d9790_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "norusingnand.v";
+    "nor.v";

@@ -1,0 +1,35 @@
+#! c:/iverilog-x64/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1_1)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000000928ba0 .scope module, "notgate_tb" "notgate_tb" 2 1;
+ .timescale 0 0;
+v00000000003d5840_0 .var "t_a", 0 0;
+v00000000003d58e0_0 .net "t_y", 0 0, L_00000000003d5980;  1 drivers
+S_0000000000928d20 .scope module, "my_gate" "notgate" 2 5, 3 1 0, S_0000000000928ba0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /OUTPUT 1 "y"
+L_00000000003d5980 .functor NOT 1, v00000000003d5840_0, C4<0>, C4<0>, C4<0>;
+v0000000000928ea0_0 .net "a", 0 0, v00000000003d5840_0;  1 drivers
+v00000000003d57a0_0 .net "y", 0 0, L_00000000003d5980;  alias, 1 drivers
+    .scope S_0000000000928ba0;
+T_0 ;
+    %vpi_call 2 10 "$monitor", "NOT %b:%b", v00000000003d5840_0, v00000000003d58e0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000003d5840_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000003d5840_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "not_tb.v";
+    "not.v";

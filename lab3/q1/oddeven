@@ -1,0 +1,96 @@
+#! c:/iverilog-x64/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1_1)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_00000000003f81e0 .scope module, "oddeven_tb" "oddeven_tb" 2 1;
+ .timescale 0 0;
+v0000000001e701c0_0 .var "t_a", 0 0;
+v0000000001e70260_0 .var "t_b", 0 0;
+v0000000001e70300_0 .var "t_c", 0 0;
+v0000000001e703a0_0 .net "t_d", 0 0, L_0000000001e704e0;  1 drivers
+v0000000001e70440_0 .net "t_y", 0 0, L_0000000001e70550;  1 drivers
+S_00000000003f8360 .scope module, "pg" "oddeven" 2 5, 3 1 0, S_00000000003f81e0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /INPUT 1 "c"
+    .port_info 3 /OUTPUT 1 "d"
+    .port_info 4 /OUTPUT 1 "y"
+L_0000000001e704e0 .functor XOR 1, v0000000001e701c0_0, v0000000001e70260_0, C4<0>, C4<0>;
+L_0000000001e70550 .functor XOR 1, v0000000001e70300_0, L_0000000001e704e0, C4<0>, C4<0>;
+v0000000000391b50_0 .net "a", 0 0, v0000000001e701c0_0;  1 drivers
+v0000000000391e40_0 .net "b", 0 0, v0000000001e70260_0;  1 drivers
+v00000000003f84e0_0 .net "c", 0 0, v0000000001e70300_0;  1 drivers
+v0000000001e70080_0 .net "d", 0 0, L_0000000001e704e0;  alias, 1 drivers
+v0000000001e70120_0 .net "y", 0 0, L_0000000001e70550;  alias, 1 drivers
+    .scope S_00000000003f81e0;
+T_0 ;
+    %vpi_call 2 9 "$monitor", "%b %b %b %b %b ", v0000000001e701c0_0, v0000000001e70260_0, v0000000001e70300_0, v0000000001e703a0_0, v0000000001e70440_0 {0 0 0};
+    %vpi_call 2 10 "$display", "A B C D Y" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e701c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e70260_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e70300_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e701c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e70260_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e70300_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e701c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e70260_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e70300_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e701c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e70260_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e70300_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e701c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e70260_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e70300_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e701c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e70260_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e70300_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e701c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e70260_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000000001e70300_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e701c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e70260_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000000001e70300_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "oddeven_tb.v";
+    "oddeven.v";

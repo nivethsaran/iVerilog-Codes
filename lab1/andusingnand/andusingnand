@@ -1,0 +1,75 @@
+#! c:/iverilog-x64/bin/vvp
+:ivl_version "10.1 (stable)" "(v10_1_1)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "vhdl_sys";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0000000000392210 .scope module, "andgate_tb" "andgate_tb" 2 1;
+ .timescale 0 0;
+v00000000003da930_0 .var "t_a", 0 0;
+v00000000003da9d0_0 .var "t_b", 0 0;
+v00000000003daa70_0 .net "t_y", 0 0, L_0000000001f901f0;  1 drivers
+S_00000000009e9160 .scope module, "my_gate" "andgate" 2 5, 3 1 0, S_0000000000392210;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /OUTPUT 1 "y"
+v00000000003da680_0 .net "a", 0 0, v00000000003da930_0;  1 drivers
+v00000000003da720_0 .net "b", 0 0, v00000000003da9d0_0;  1 drivers
+v00000000003da7c0_0 .net "c", 0 0, L_0000000001f90080;  1 drivers
+v00000000003da860_0 .net "y", 0 0, L_0000000001f901f0;  alias, 1 drivers
+S_00000000009e92e0 .scope module, "nand1" "nandgate" 3 4, 4 1 0, S_00000000009e9160;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /OUTPUT 1 "y"
+L_0000000000391500 .functor AND 1, v00000000003da930_0, v00000000003da9d0_0, C4<1>, C4<1>;
+L_0000000001f90080 .functor NOT 1, L_0000000000391500, C4<0>, C4<0>, C4<0>;
+v00000000009e9460_0 .net *"_s0", 0 0, L_0000000000391500;  1 drivers
+v0000000000391460_0 .net "a", 0 0, v00000000003da930_0;  alias, 1 drivers
+v00000000009e7920_0 .net "b", 0 0, v00000000003da9d0_0;  alias, 1 drivers
+v00000000009e79c0_0 .net "y", 0 0, L_0000000001f90080;  alias, 1 drivers
+S_00000000009e7a60 .scope module, "nand2" "nandgate" 3 5, 4 1 0, S_00000000009e9160;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a"
+    .port_info 1 /INPUT 1 "b"
+    .port_info 2 /OUTPUT 1 "y"
+L_0000000001f90180 .functor AND 1, L_0000000001f90080, L_0000000001f90080, C4<1>, C4<1>;
+L_0000000001f901f0 .functor NOT 1, L_0000000001f90180, C4<0>, C4<0>, C4<0>;
+v00000000009e7be0_0 .net *"_s0", 0 0, L_0000000001f90180;  1 drivers
+v00000000009e7c80_0 .net "a", 0 0, L_0000000001f90080;  alias, 1 drivers
+v00000000003da540_0 .net "b", 0 0, L_0000000001f90080;  alias, 1 drivers
+v00000000003da5e0_0 .net "y", 0 0, L_0000000001f901f0;  alias, 1 drivers
+    .scope S_0000000000392210;
+T_0 ;
+    %vpi_call 2 9 "$monitor", "%b AND %b:%b", v00000000003da930_0, v00000000003da9d0_0, v00000000003daa70_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000003da930_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000003da9d0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000003da930_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000003da9d0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000003da930_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v00000000003da9d0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000003da930_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v00000000003da9d0_0, 0, 1;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "andusingnand.v";
+    "and.v";
+    "nand.v";
